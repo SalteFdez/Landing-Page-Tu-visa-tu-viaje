@@ -1,0 +1,44 @@
+---
+// Layout.astro
+import "../styles/global.css"
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="assets/Logo.png" />
+  <meta name="generator" content={Astro.generator} />
+  <title>Tu Visa, Tu Viaje</title>
+</head>
+<body class="min-h-screen flex flex-col">
+  <slot />
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --max-width: 1200px;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: system-ui, sans-serif;
+  }
+  
+  /* Contenedor principal para centrar contenido */
+  .container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+</style>
