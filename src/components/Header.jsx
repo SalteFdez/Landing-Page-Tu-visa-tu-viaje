@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-aria-components";
 import { Menu, X } from "lucide-react";
-import logo from "/public/assets/logo.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,7 +11,7 @@ export default function Header() {
         {/* Logo */}
         <a href="/" className="flex items-center">
           <img
-            src={logo}
+            src={"/assets/logo.png"}
             width="40"
             height="40"
             alt="Tu Visa, Tu Viaje"
