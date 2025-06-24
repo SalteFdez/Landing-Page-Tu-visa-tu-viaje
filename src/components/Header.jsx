@@ -11,7 +11,7 @@ export default function Header() {
         {/* Logo */}
         <a href="/" className="flex items-center">
           <img
-            src={"/assets/logo.png"}
+            src="/assets/logo.png"
             width="40"
             height="40"
             alt="Tu Visa, Tu Viaje"
