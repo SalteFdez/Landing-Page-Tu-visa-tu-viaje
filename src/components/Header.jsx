@@ -10,8 +10,8 @@ export default function Header() {
       <div className="container h-16 flex items-center justify-between relative">
         {/* Logo */}
         <a href="/" className="flex items-center">
-          <img
-            src="public/assets/logo.png"
+          <image
+            src="/assets/logo.png"
             width="40"
             height="40"
             alt="Tu Visa, Tu Viaje"
