@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-aria-components";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "/public/assets/logo.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
