@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-gray-900 text-white">
       <div className="container flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center gap-2">
-          <image
+          <img
             src="/assets/logo.png"
             width="48"
             height="48"

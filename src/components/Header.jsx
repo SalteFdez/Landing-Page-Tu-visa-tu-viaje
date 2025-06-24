@@ -10,7 +10,7 @@ export default function Header() {
       <div className="container h-16 flex items-center justify-between relative">
         {/* Logo */}
         <a href="/" className="flex items-center">
-          <image
+          <img
             src="/assets/logo.png"
             width="40"
             height="40"
