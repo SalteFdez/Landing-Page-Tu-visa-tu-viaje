@@ -23,10 +23,10 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           <a
-            href="#"
+            href="/workingholiday"
             className="text-sm font-medium hover:text-[#E9744C] transition-colors"
           >
-            Que es Working Holiday?
+            Working Holiday
           </a>
           <a
             href="#servicios"
@@ -85,7 +85,7 @@ export default function Header() {
                 className="text-lg font-medium hover:text-[#E9744C] transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Que es Working Holiday?
+                Working Holiday
               </a>
               <a
                 href="#servicios"

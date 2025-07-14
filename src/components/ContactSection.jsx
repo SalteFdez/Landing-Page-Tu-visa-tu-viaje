@@ -1,7 +1,45 @@
+import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "react-aria-components";
 
 export default function ContactSection() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mrbkjyjg", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        e.target.reset();
+      } else {
+        const errorMsg =
+          result?.errors?.map((err) => err.message).join(", ") ||
+          "Ocurrió un error al enviar el formulario.";
+        alert(errorMsg);
+      }
+    } catch (error) {
+      console.error("Error al enviar:", error);
+      alert("Hubo un problema al enviar el formulario.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section
       id="contacto"
@@ -23,7 +61,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Teléfono</div>
-                  <div className="text-gray-600">+1 (555) 123-4567</div>
+                  <div className="text-gray-600">+54 387 5105738</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -46,63 +84,104 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
+
           <div className="rounded-lg bg-white shadow p-6 space-y-4">
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold">
-                Solicita una Consulta Gratuita
-              </h3>
-              <p className="text-gray-600">
-                Cuéntanos sobre tu viaje y te ayudaremos con todos los trámites
+            {isSubmitted ? (
+              <p className="text-green-600 font-medium text-center">
+                ¡Gracias por tu consulta! Te responderemos pronto.
               </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Nombre</label>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium" htmlFor="nombre">
+                      Nombre
+                    </label>
+                    <input
+                      name="nombre"
+                      id="nombre"
+                      required
+                      placeholder="Tu nombre"
+                      className="w-full border rounded-md px-3 py-2 text-sm"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium" htmlFor="apellido">
+                      Apellido
+                    </label>
+                    <input
+                      name="apellido"
+                      id="apellido"
+                      required
+                      placeholder="Tu apellido"
+                      className="w-full border rounded-md px-3 py-2 text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="tu@email.com"
+                    className="w-full border rounded-md px-3 py-2 text-sm"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium" htmlFor="telefono">
+                    Teléfono
+                  </label>
+                  <input
+                    name="telefono"
+                    id="telefono"
+                    required
+                    placeholder="+1 (555) 123-4567"
+                    className="w-full border rounded-md px-3 py-2 text-sm"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium" htmlFor="destino">
+                    Destino
+                  </label>
+                  <input
+                    name="destino"
+                    id="destino"
+                    placeholder="¿A dónde viajas?"
+                    className="w-full border rounded-md px-3 py-2 text-sm"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium" htmlFor="mensaje">
+                    Mensaje
+                  </label>
+                  <textarea
+                    name="mensaje"
+                    id="mensaje"
+                    className="w-full min-h-[100px] border rounded-md px-3 py-2 text-sm"
+                    placeholder="Cuéntanos qué servicios necesitas..."
+                  />
+                </div>
+
+                {/* Asunto oculto */}
                 <input
-                  placeholder="Tu nombre"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
+                  type="hidden"
+                  name="_subject"
+                  value="Nueva consulta desde el sitio web"
                 />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Apellido</label>
-                <input
-                  placeholder="Tu apellido"
-                  className="w-full border rounded-md px-3 py-2 text-sm"
-                />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Email</label>
-              <input
-                type="email"
-                placeholder="tu@email.com"
-                className="w-full border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Teléfono</label>
-              <input
-                placeholder="+1 (555) 123-4567"
-                className="w-full border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Destino</label>
-              <input
-                placeholder="¿A dónde viajas?"
-                className="w-full border rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Mensaje</label>
-              <textarea
-                className="w-full min-h-[100px] border rounded-md px-3 py-2 text-sm"
-                placeholder="Cuéntanos qué servicios necesitas..."
-              />
-            </div>
-            <Button className="w-full bg-[#E9744C] hover:bg-[#E9744C]/90 text-white rounded-md px-4 py-2 text-sm">
-              Enviar Solicitud
-            </Button>
+
+                <Button
+                  type="submit"
+                  className="w-full bg-[#E9744C] hover:bg-[#E9744C]/90 text-white rounded-md px-4 py-2 text-sm"
+                  isDisabled={isLoading}
+                >
+                  {isLoading ? "Enviando..." : "Enviar Solicitud"}
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </div>

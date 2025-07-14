@@ -43,9 +43,9 @@ export default function Hero() {
 
           {/* Image - ordenado después para mobile */}
           <div className="w-full lg:w-1/2">
-            <div className="relative aspect-video w-full max-w-[600px] mx-auto lg:mx-0">
+            <div className="relative w-full max-w-[600px] mx-auto lg:mx-0">
               <img
-                src="/placeholder.svg?height=400&width=600"
+                src="/assets/pareja_joven2.png"
                 alt="Experiencia de viaje"
                 className="w-full h-full object-cover rounded-xl shadow-2xl"
                 loading="eager"

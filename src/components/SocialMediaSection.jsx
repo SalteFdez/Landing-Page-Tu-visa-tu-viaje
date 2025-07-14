@@ -7,7 +7,12 @@ import {
 } from "lucide-react";
 
 const socials = [
-  { href: "#", label: "Facebook", bg: "bg-[#1877F2]", Icon: Facebook },
+  {
+    href: "https://www.facebook.com/share/g/16m2X38akj/",
+    label: "Facebook",
+    bg: "bg-[#1877F2]",
+    Icon: Facebook,
+  },
   {
     href: "https://www.instagram.com/tuvisa.tuviaje?igsh=dGJzYnNwazRpdTc5",
     label: "Instagram",
