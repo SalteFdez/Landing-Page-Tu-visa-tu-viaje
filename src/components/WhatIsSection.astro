@@ -1,0 +1,231 @@
+---
+// WhatIsSection.astro
+---
+
+<section class="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-br from-[#F9E9D8] via-white to-[#EFA297]/20 relative overflow-hidden">
+  <!-- Elementos decorativos de fondo -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 right-20 w-64 h-64 bg-[#E9744C]/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-80 h-80 bg-[#327BA8]/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#EFA297]/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 md:px-6 relative z-10">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <!-- Contenido de texto -->
+      <div class="whatis-content space-y-8">
+        <div class="space-y-6">
+          <div class="inline-flex items-center px-4 py-2 bg-[#E9744C]/10 text-[#E9744C] rounded-full text-sm font-semibold">
+            <span class="mr-2">✨</span>
+            Tu compañero de viaje
+          </div>
+          
+          <h2 class="whatis-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            ¿Qué es 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E9744C] to-[#327BA8]">Tu Visa, Tu Viaje</span>?
+          </h2>
+          
+          <p class="text-xl text-gray-700 leading-relaxed">
+            Aprendé cómo funcionan nuestros servicios que te permiten viajar
+            sin preocupaciones por todo el mundo. Gestionamos visas,
+            trámites administrativos y seguros para que solo te enfoques en
+            disfrutar de tu aventura.
+          </p>
+        </div>
+
+        <!-- Características -->
+        <div class="grid gap-4">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-[#3E915C] rounded-lg flex items-center justify-center">
+              <span class="text-white text-sm">✓</span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Gestión completa de visas</h4>
+              <p class="text-gray-600">Nos encargamos de todo el proceso burocrático</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-[#327BA8] rounded-lg flex items-center justify-center">
+              <span class="text-white text-sm">✓</span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Seguros personalizados</h4>
+              <p class="text-gray-600">Protección adaptada a tu destino y necesidades</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-[#EFA297] rounded-lg flex items-center justify-center">
+              <span class="text-white text-sm">✓</span>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900">Soporte 24/7</h4>
+              <p class="text-gray-600">Estamos contigo en cada paso del viaje</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button class="whatis-btn-primary group relative overflow-hidden bg-gradient-to-r from-[#E9744C] to-[#EFA297] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <span class="relative z-10">¡Quiero saber más!</span>
+            <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          </button>
+          
+          <button class="whatis-btn-secondary border-2 border-[#E9744C] text-[#E9744C] px-8 py-4 rounded-xl font-semibold hover:bg-[#E9744C] hover:text-white transition-all duration-300 transform hover:scale-105">
+            Ver testimonios
+          </button>
+        </div>
+      </div>
+
+      <!-- Imagen/Ilustración -->
+      <div class="whatis-image relative">
+        <div class="relative">
+          <!-- Card principal -->
+          <div class="bg-white rounded-3xl p-8 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#E9744C] to-[#EFA297] rounded-xl flex items-center justify-center">
+                  <span class="text-white text-xl">🌍</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Destinos disponibles</h4>
+                  <p class="text-gray-600 text-sm">Más de 20 países</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#3E915C] to-[#327BA8] rounded-xl flex items-center justify-center">
+                  <span class="text-white text-xl">📋</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Tramitación rápida</h4>
+                  <p class="text-gray-600 text-sm">Proceso optimizado</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#327BA8] to-[#B68F6A] rounded-xl flex items-center justify-center">
+                  <span class="text-white text-xl">🛡️</span>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900">Cobertura completa</h4>
+                  <p class="text-gray-600 text-sm">Seguridad garantizada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Elementos flotantes -->
+          <div class="absolute -top-4 -right-4 w-16 h-16 bg-[#EFA297] rounded-2xl flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl">✈️</span>
+          </div>
+          
+          <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-[#327BA8] rounded-2xl flex items-center justify-center shadow-lg">
+            <span class="text-white text-lg">🎯</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .whatis-content {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+  }
+  
+  .whatis-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+  }
+  
+  .whatis-image {
+    opacity: 0;
+    transform: translateX(30px);
+    animation: slideInRight 1s ease-out 0.7s forwards;
+  }
+  
+  .whatis-btn-primary {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1s forwards;
+  }
+  
+  .whatis-btn-secondary {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 1.2s forwards;
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // @ts-nocheck - GSAP está disponible globalmente
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap !== 'undefined') {
+      // Animación de scroll para la sección
+      gsap.registerPlugin(ScrollTrigger);
+      
+      gsap.from('.whatis-content', {
+        scrollTrigger: {
+          trigger: '.whatis-content',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        },
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+      });
+      
+      gsap.from('.whatis-image', {
+        scrollTrigger: {
+          trigger: '.whatis-image',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        },
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out'
+      });
+      
+      // Animación de los elementos flotantes
+      gsap.to('.whatis-image .absolute', {
+        y: -10,
+        duration: 2,
+        ease: 'power2.inOut',
+        stagger: 0.3,
+        repeat: -1,
+        yoyo: true
+      });
+    }
+  });
+</script>

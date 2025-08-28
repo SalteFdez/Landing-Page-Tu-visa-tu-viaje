@@ -1,5 +1,7 @@
 ---
 // Layout.astro
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
 import "../styles/global.css"
 ---
 
@@ -11,9 +13,15 @@ import "../styles/global.css"
   <link rel="icon" type="image/svg+xml" href="assets/logo.png" />
   <meta name="generator" content={Astro.generator} />
   <title>Tu Visa, Tu Viaje</title>
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body class="min-h-screen flex flex-col">
+  <Header />
   <slot />
+  <Footer />
 </body>
 </html>
 
@@ -40,5 +48,21 @@ import "../styles/global.css"
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 1rem;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Mejoras de rendimiento */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Animaciones suaves */
+  .transition-all {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 </style>

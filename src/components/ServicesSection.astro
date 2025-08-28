@@ -1,0 +1,244 @@
+---
+// ServicesSection.astro
+const services = [
+  {
+    title: "Gestión de visas",
+    desc: "Para destinos internacionales",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+    </svg>`
+  },
+  {
+    title: "Turnos para entrevistas",
+    desc: "En embajadas y consulados",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+    </svg>`
+  },
+  {
+    title: "Asesoramiento personalizado",
+    desc: "Según tu tipo de viaje",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+    </svg>`
+  },
+  {
+    title: "Revisión y armado",
+    desc: "De requisitos y documentación",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+    </svg>`
+  },
+  {
+    title: "Seguros de viaje",
+    desc: "Y asistencias internacionales",
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 12 2 2 4-4"></path>
+    </svg>`
+  }
+];
+
+const travelTypes = [
+  { 
+    name: "Turismo", 
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>`
+  },
+  { 
+    name: "Estudio", 
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+    </svg>`
+  },
+  { 
+    name: "Working Holiday", 
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+    </svg>`
+  },
+  { 
+    name: "Work & Travel", 
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>`
+  }
+];
+---
+
+<section id="servicios" class="w-full py-16 md:py-20 bg-white relative">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-white via-slate-50 to-white"></div>
+  <div class="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] [background-image:radial-gradient(circle_at_1px_1px,#000_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+ <div class="container mx-auto px-4 md:px-6 relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="services-title text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        Hacemos que tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-400">proceso de visa</span> sea simple
+      </h2>
+      
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+        Nos encargamos del papeleo, las citas y la estrategia. Vos te encargás de elegir el destino.
+      </p>
+      
+    </div>
+
+    <!-- Services List -->
+    <div class="max-w-6xl mx-auto mb-16">
+      <div class="flex flex-wrap justify-center gap-4">
+        {services.map((service, i) => (
+          <div class="service-item group">
+            <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-300">
+              <div class="flex-shrink-0 w-10 h-10 bg-[#E9744C]/10 rounded-lg flex items-center justify-center text-[#E9744C] group-hover:bg-[#E9744C]/20 group-hover:scale-110 transition-all duration-300" set:html={service.icon}>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 group-hover:text-[#E9744C] transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p class="text-sm text-gray-600">
+                  {service.desc}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Travel Types -->
+    <div class="text-center mb-16">
+      <div class="bg-gray-50 rounded-2xl p-8 md:p-12">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          ¿Para qué tipo de viaje te ayudamos?
+        </h3>
+        
+        <div class="flex flex-wrap justify-center gap-6">
+          {travelTypes.map((type, i) => (
+            <div class="travel-type-item group">
+              <div class="flex flex-col items-center p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <div class="w-12 h-12 bg-[#E9744C]/10 rounded-lg flex items-center justify-center text-[#E9744C] mb-3 group-hover:bg-[#E9744C]/20 group-hover:scale-110 transition-all duration-300" set:html={type.icon}>
+                </div>
+                <span class="text-sm font-medium text-gray-700 group-hover:text-[#E9744C] transition-colors duration-300 text-center">
+                  {type.name}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <div class="bg-gradient-to-r from-[#E9744C] to-[#EFA297] rounded-2xl p-8 md:p-12 text-white">
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+          ¿Necesitás ayuda personalizada?
+        </h3>
+        <p class="text-lg mb-8 opacity-90">
+          Nuestros expertos están listos para asesorarte en cada paso de tu viaje
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="bg-white text-[#E9744C] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300">
+            Consulta gratuita
+          </button>
+          <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[#E9744C] transition-all duration-300">
+            Ver testimonios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+  }
+  
+  .service-item {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .service-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.5s forwards; }
+  .service-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.6s forwards; }
+  .service-item:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.7s forwards; }
+  .service-item:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.8s forwards; }
+  .service-item:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.9s forwards; }
+  
+  .travel-type-item {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .travel-type-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 1.1s forwards; }
+  .travel-type-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 1.2s forwards; }
+  .travel-type-item:nth-child(3) { animation: fadeInUp 0.6s ease-out 1.3s forwards; }
+  .travel-type-item:nth-child(4) { animation: fadeInUp 0.6s ease-out 1.4s forwards; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // @ts-nocheck - GSAP está disponible globalmente
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animación de los servicios
+      gsap.from('.service-item', {
+        scrollTrigger: {
+          trigger: '#servicios',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out'
+      });
+      
+      // Animación de los tipos de viaje
+      gsap.from('.travel-type-item', {
+        scrollTrigger: {
+          trigger: '.travel-type-item',
+          start: 'top 90%',
+          toggleActions: 'play none none reverse'
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'power3.out'
+      });
+      
+      // Hover animations
+      gsap.utils.toArray('.service-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          gsap.to(item.querySelector('.w-10'), {
+            scale: 1.1,
+            duration: 0.3,
+            ease: 'back.out(1.7)'
+          });
+        });
+        
+        item.addEventListener('mouseleave', () => {
+          gsap.to(item.querySelector('.w-10'), {
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+      });
+    }
+  });
+</script>
