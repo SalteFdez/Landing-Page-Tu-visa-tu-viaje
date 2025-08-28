@@ -2,14 +2,10 @@
 // /src/pages/workingholiday.astro
 import Layout from '../layouts/Layout.astro'
 import WorkingHolidaySection from '../components/WorkingHolidaySection.jsx' // si usás React
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 ---
 
 <Layout title="Visa Working Holiday">
   <section class="flex-1">
-    <Header client:load />
     <WorkingHolidaySection />
-    <Footer/>
   </section>
 </Layout>

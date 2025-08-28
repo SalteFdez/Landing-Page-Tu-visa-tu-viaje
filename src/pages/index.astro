@@ -5,22 +5,19 @@ import ProcessSteps from '../components/ProcessSteps.astro';
 import CountryCarousel from '../components/CountryCarousel.jsx';
 import WhatIsSection from '../components/WhatIsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
-import SocialMediaSection from '../components/SocialMediaSection.jsx';
-import CTASection from '../components/CTASection.astro';
+import SocialMediaSection from '../components/SocialMediaSection.astro';
 import ContactSection from '../components/ContactSection.jsx';
-import Footer from '../components/Footer.jsx';
 ---
 
 <Layout>
     <main class="flex-1">
       <Hero />
-      <ProcessSteps />
-      <CountryCarousel client:load />
-      <WhatIsSection />
       <ServicesSection />
+      <CountryCarousel client:load />
+      <ProcessSteps />
+      <!-- <WhatIsSection /> -->
       <SocialMediaSection />
-      <CTASection />
       <ContactSection />
     </main>
-    <Footer />
+
 </Layout>

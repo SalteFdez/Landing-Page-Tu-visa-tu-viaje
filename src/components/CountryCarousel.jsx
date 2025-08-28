@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { countries } from "./countries.js";
 
 export default function CountryCarousel() {
@@ -8,7 +8,7 @@ export default function CountryCarousel() {
   const [perSlide, setPerSlide] = useState(6);
   const carouselTrackRef = useRef(null);
   const [itemWidth, setItemWidth] = useState(0);
-  const gapPx = 16;
+  const gapPx = 12;
 
   const totalCountries = countries.length;
   const numSlides = Math.ceil(totalCountries / perSlide);
@@ -17,10 +17,11 @@ export default function CountryCarousel() {
   useEffect(() => {
     const updatePerSlide = () => {
       const width = window.innerWidth;
-      if (width < 640) setPerSlide(2);
-      else if (width < 768) setPerSlide(3);
-      else if (width < 1024) setPerSlide(4);
-      else setPerSlide(6);
+      if (width < 640) setPerSlide(1);
+      else if (width < 768) setPerSlide(2);
+      else if (width < 1024) setPerSlide(3);
+      else if (width < 1280) setPerSlide(4);
+      else setPerSlide(5);
     };
 
     updatePerSlide();
@@ -66,27 +67,31 @@ export default function CountryCarousel() {
     }
   };
 
+  const goToSlide = (index) => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentSlideIndex(index);
+    }
+  };
+
   const displayOffset = -(currentSlideIndex * (itemWidth + gapPx) * perSlide);
 
   return (
     <section
       id="destinos"
-      className="w-full py-12 md:py-24 lg:py-32 bg-gray-50"
+      className="w-full py-8 md:py-12 lg:py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-12 space-y-4">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl text-gray-900">
+        <div className="flex flex-col items-center text-center mb-8 space-y-4">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
             Conocé todos los destinos disponibles
           </h2>
-          <p className="text-lg text-gray-600">
-            Más de {totalCountries} países esperándote
-          </p>
         </div>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-lg bg-white/50 backdrop-blur-sm p-2 shadow-md">
           <div
             ref={carouselTrackRef}
-            className="flex transition-transform duration-500 ease-in-out"
+            className="flex transition-transform duration-700 ease-out"
             style={{
               transform: `translateX(${displayOffset}px)`,
               width: `${extendedCountries.length * (itemWidth + gapPx)}px`,
@@ -96,7 +101,7 @@ export default function CountryCarousel() {
             {extendedCountries.map((c, index) => (
               <div
                 key={`${c.name}-${index}`}
-                className="border bg-white rounded-lg overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+                className="group relative overflow-hidden rounded-md bg-white shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
                 style={{
                   width: `${itemWidth}px`,
                   marginRight:
@@ -104,17 +109,20 @@ export default function CountryCarousel() {
                   flexShrink: 0,
                 }}
               >
-                <div className="aspect-[4/3] relative">
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <img
                     src={c.image}
                     alt={c.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-3 text-center">
-                  <div className="flex items-center justify-center gap-2">
-                    <span className="text-2xl">{c.flag}</span>
-                    <span className="font-medium text-sm">{c.name}</span>
+                <div className="p-2 text-center">
+                  <div className="flex items-center justify-center gap-1">
+                    <span className="text-lg drop-shadow-sm">{c.flag}</span>
+                    <span className="font-medium text-xs text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {c.name}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -125,19 +133,37 @@ export default function CountryCarousel() {
             <>
               <button
                 onClick={prev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-4 bg-white shadow p-2 rounded-full hover:bg-gray-100 z-10"
+                className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3 h-3 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
               <button
                 onClick={next}
-                className="absolute right-4 top-1/2 -translate-y-1/2 translate-x-4 bg-white shadow p-2 rounded-full hover:bg-gray-100 z-10"
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3 h-3 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
             </>
           )}
         </div>
+
+        {/* Indicadores de progreso */}
+        {totalCountries > perSlide && (
+          <div className="flex justify-center items-center gap-1.5 mt-4">
+            {Array.from({ length: numSlides }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  currentSlideIndex === index
+                    ? "bg-blue-600 scale-125"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Ir al slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
