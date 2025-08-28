@@ -1,20 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Header from '../components/Header.jsx';
-import Hero from '../components/Hero.jsx';
-import ProcessSteps from '../components/ProcessSteps.jsx';
+import Hero from '../components/Hero.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
 import CountryCarousel from '../components/CountryCarousel.jsx';
-import WhatIsSection from '../components/WhatIsSection.jsx';
-import ServicesSection from '../components/ServicesSection.jsx';
+import WhatIsSection from '../components/WhatIsSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
 import SocialMediaSection from '../components/SocialMediaSection.jsx';
-import CTASection from '../components/CTASection.jsx';
+import CTASection from '../components/CTASection.astro';
 import ContactSection from '../components/ContactSection.jsx';
 import Footer from '../components/Footer.jsx';
 ---
 
 <Layout>
-  <div class="flex flex-col min-h-screen">
-    <Header client:load />
     <main class="flex-1">
       <Hero />
       <ProcessSteps />
@@ -26,5 +23,4 @@ import Footer from '../components/Footer.jsx';
       <ContactSection />
     </main>
     <Footer />
-  </div>
 </Layout>
