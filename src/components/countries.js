@@ -1,5 +1,5 @@
 export const countries = [
-  { name: "Estados Unidos", flag: "🇺🇸", image: "/countries/USA.jpeg?height=200&width=300" },
+  { name: "Estados Unidos", flag: "🇺🇸", image: "/countries/USA.png?height=200&width=300" },
   { name: "Canadá", flag: "🇨🇦", image: "/countries/Canada.png?height=200&width=300" },
   { name: "España", flag: "🇪🇸", image: "/countries/Espana.png?height=200&width=300" },
   { name: "Francia", flag: "🇫🇷", image: "/countries/Francia.png?height=200&width=300" },
