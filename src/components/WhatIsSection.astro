@@ -134,31 +134,26 @@
   .whatis-content {
     opacity: 0;
     transform: translateX(-30px);
-    animation: slideInLeft 1s ease-out 0.3s forwards;
   }
   
   .whatis-title {
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 1s ease-out 0.5s forwards;
   }
   
   .whatis-image {
     opacity: 0;
     transform: translateX(30px);
-    animation: slideInRight 1s ease-out 0.7s forwards;
   }
   
   .whatis-btn-primary {
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 1s ease-out 1s forwards;
   }
   
   .whatis-btn-secondary {
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 1s ease-out 1.2s forwards;
   }
   
   @keyframes slideInLeft {
@@ -185,47 +180,103 @@
 
 <script>
   // @ts-nocheck - GSAP está disponible globalmente
-  
   document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap !== 'undefined') {
-      // Animación de scroll para la sección
-      gsap.registerPlugin(ScrollTrigger);
-      
-      gsap.from('.whatis-content', {
-        scrollTrigger: {
-          trigger: '.whatis-content',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      });
-      
-      gsap.from('.whatis-image', {
-        scrollTrigger: {
-          trigger: '.whatis-image',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse'
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      });
-      
-      // Animación de los elementos flotantes
-      gsap.to('.whatis-image .absolute', {
-        y: -10,
-        duration: 2,
-        ease: 'power2.inOut',
-        stagger: 0.3,
-        repeat: -1,
-        yoyo: true
-      });
+    const initWhatIsAnimations = () => {
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+
+      if (gsap && ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animación del contenido de texto
+        gsap.fromTo('.whatis-content', 
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.whatis-content',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación del título
+        gsap.fromTo('.whatis-title', 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.whatis-title',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación de la imagen
+        gsap.fromTo('.whatis-image', 
+          { opacity: 0, x: 50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.whatis-image',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación de los botones
+        gsap.fromTo('.whatis-btn-primary, .whatis-btn-secondary', 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.whatis-btn-primary',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación de los elementos flotantes (solo en desktop)
+        if (window.innerWidth > 768) {
+          gsap.to('.whatis-image .absolute', {
+            y: -10,
+            duration: 2,
+            ease: 'power2.inOut',
+            stagger: 0.3,
+            repeat: -1,
+            yoyo: true
+          });
+        }
+      }
+    };
+
+    // Intentar inicializar inmediatamente
+    initWhatIsAnimations();
+
+    // Si GSAP no está disponible, esperar un poco y reintentar
+    if (!window.gsap) {
+      setTimeout(initWhatIsAnimations, 100);
     }
   });
 </script>

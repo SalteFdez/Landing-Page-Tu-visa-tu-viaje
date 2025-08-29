@@ -8,7 +8,7 @@ export default function CountryCarousel() {
   const [perSlide, setPerSlide] = useState(6);
   const carouselTrackRef = useRef(null);
   const [itemWidth, setItemWidth] = useState(0);
-  const gapPx = 12;
+  const gapPx = 8; // Reducido el gap para móviles
 
   const totalCountries = countries.length;
   const numSlides = Math.ceil(totalCountries / perSlide);
@@ -17,11 +17,12 @@ export default function CountryCarousel() {
   useEffect(() => {
     const updatePerSlide = () => {
       const width = window.innerWidth;
-      if (width < 640) setPerSlide(1);
-      else if (width < 768) setPerSlide(2);
-      else if (width < 1024) setPerSlide(3);
-      else if (width < 1280) setPerSlide(4);
-      else setPerSlide(5);
+      if (width < 480) setPerSlide(3); // Móviles muy pequeños: 3 países
+      else if (width < 640) setPerSlide(4); // Móviles pequeños: 4 países
+      else if (width < 768) setPerSlide(5); // Móviles medianos: 5 países
+      else if (width < 1024) setPerSlide(6); // Tablets: 6 países
+      else if (width < 1280) setPerSlide(7); // Desktop pequeño: 7 países
+      else setPerSlide(8); // Desktop grande: 8 países
     };
 
     updatePerSlide();
@@ -79,16 +80,16 @@ export default function CountryCarousel() {
   return (
     <section
       id="destinos"
-      className="w-full py-8 md:py-12 lg:py-16 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
+      className="w-full py-6 md:py-8 lg:py-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-8 space-y-4">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
+      <div className="container mx-auto px-3 md:px-6">
+        <div className="flex flex-col items-center text-center mb-6 md:mb-8 space-y-3 md:space-y-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">
             Conocé todos los destinos disponibles
           </h2>
         </div>
 
-        <div className="relative overflow-hidden rounded-lg bg-white/50 backdrop-blur-sm p-2 shadow-md">
+        <div className="relative overflow-hidden rounded-lg bg-white/50 backdrop-blur-sm p-1 md:p-2 shadow-md">
           <div
             ref={carouselTrackRef}
             className="flex transition-transform duration-700 ease-out"
@@ -117,10 +118,10 @@ export default function CountryCarousel() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-2 text-center">
+                <div className="p-1 md:p-2 text-center">
                   <div className="flex items-center justify-center gap-1">
-                    <span className="text-lg drop-shadow-sm">{c.flag}</span>
-                    <span className="font-medium text-xs text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <span className="text-sm md:text-lg drop-shadow-sm">{c.flag}</span>
+                    <span className="font-medium text-xs md:text-sm text-gray-900 group-hover:text-blue-600 transition-colors">
                       {c.name}
                     </span>
                   </div>
@@ -133,37 +134,43 @@ export default function CountryCarousel() {
             <>
               <button
                 onClick={prev}
-                className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
+                className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronLeft className="w-3 h-3 text-gray-700 group-hover:text-blue-600 transition-colors" />
+                <ChevronLeft className="w-3 h-3 md:w-4 md:h-4 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
               <button
                 onClick={next}
-                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronRight className="w-3 h-3 text-gray-700 group-hover:text-blue-600 transition-colors" />
+                <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
             </>
           )}
         </div>
 
-        {/* Indicadores de progreso */}
-        {totalCountries > perSlide && (
-          <div className="flex justify-center items-center gap-1.5 mt-4">
-            {Array.from({ length: numSlides }, (_, index) => (
+        {/* Indicadores de navegación */}
+        {totalCountries > perSlide && numSlides > 1 && (
+          <div className="flex justify-center mt-4 md:mt-6 space-x-2">
+            {Array.from({ length: numSlides }, (_, i) => (
               <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  currentSlideIndex === index
+                key={i}
+                onClick={() => goToSlide(i)}
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                  currentSlideIndex === i
                     ? "bg-blue-600 scale-125"
                     : "bg-gray-300 hover:bg-gray-400"
                 }`}
-                aria-label={`Ir al slide ${index + 1}`}
               />
             ))}
           </div>
         )}
+
+        {/* Información adicional */}
+        <div className="text-center mt-6 md:mt-8">
+          <p className="text-sm md:text-base text-gray-600 mb-4">
+            Más de <span className="font-semibold text-blue-600">{totalCountries} destinos</span> disponibles para tu Working Holiday
+          </p>
+        </div>
       </div>
     </section>
   );

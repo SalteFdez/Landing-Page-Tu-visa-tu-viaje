@@ -1,5 +1,7 @@
 ---
 // ServicesSection.astro
+
+const whatsappUrl = "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!"
 const services = [
   {
     title: "Gestión de visas",
@@ -139,12 +141,9 @@ const travelTypes = [
           Nuestros expertos están listos para asesorarte en cada paso de tu viaje
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button class="bg-white text-[#E9744C] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300">
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="bg-white text-[#E9744C] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-300 inline-block">
             Consulta gratuita
-          </button>
-          <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[#E9744C] transition-all duration-300">
-            Ver testimonios
-          </button>
+          </a>
         </div>
       </div>
     </div>
