@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "react-aria-components";
+
+const whatsappUrl = "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!";
 
 export default function ContactSection() {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,6 +82,17 @@ export default function ContactSection() {
                 <div>
                   <div className="font-semibold text-gray-900">Oficina</div>
                   <div className="text-gray-600">Av. Principal 123, Ciudad</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                  <MessageCircle className="h-5 w-5 text-green-600" />
+                </div>
+                <div>
+                  <div className="font-semibold text-gray-900">WhatsApp</div>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
+                    +54 387 5105738
+                  </a>
                 </div>
               </div>
             </div>
@@ -180,6 +193,25 @@ export default function ContactSection() {
                 >
                   {isLoading ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
+                
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-white px-2 text-gray-500">O</span>
+                  </div>
+                </div>
+                
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-green-500 hover:bg-green-600 text-white rounded-md px-4 py-2 text-sm flex items-center justify-center gap-2 transition-colors duration-300"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Consultar por WhatsApp
+                </a>
               </form>
             )}
           </div>

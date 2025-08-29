@@ -1,5 +1,7 @@
 ---
 // Hero.astro
+
+const whatsappUrl = "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!"
 ---
 
 <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
@@ -44,10 +46,10 @@
       
       <!-- Botones -->
       <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-        <button class="hero-btn-primary group relative overflow-hidden rounded-xl px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#E9744C] to-[#EFA297] hover:from-[#EFA297] hover:to-[#E9744C] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="hero-btn-primary group relative overflow-hidden rounded-xl px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-[#E9744C] to-[#EFA297] hover:from-[#EFA297] hover:to-[#E9744C] transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-block">
           <span class="relative z-10">Comenzá tu viaje</span>
           <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-        </button>
+        </a>
         
         <button class="hero-btn-secondary group relative overflow-hidden rounded-xl px-8 py-4 text-lg font-semibold text-white border-2 border-white hover:bg-white hover:text-[#E9744C] transition-all duration-300 transform hover:scale-105">
           <span class="relative z-10">Ver Destinos</span>

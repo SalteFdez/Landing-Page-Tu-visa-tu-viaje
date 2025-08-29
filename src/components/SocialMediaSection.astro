@@ -1,5 +1,8 @@
 ---
 // SocialMediaSection.astro
+
+const whatsappUrl =  "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!"
+
 const socials = [
   {
     href: "https://www.facebook.com/share/g/16m2X38akj/",
@@ -18,7 +21,7 @@ const socials = [
     </svg>`
   },
   {
-    href: "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!",
+    href: whatsappUrl,
     label: "WhatsApp",
     bg: "bg-[#25D366]",
     icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -98,11 +101,6 @@ const socials = [
     transform: translateY(20px);
   }
   
-  .stat-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.3s forwards; }
-  .stat-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.4s forwards; }
-  .stat-item:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.5s forwards; }
-  .stat-item:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.6s forwards; }
-  
   @keyframes fadeInUp {
     to {
       opacity: 1;
@@ -114,36 +112,75 @@ const socials = [
 <script>
   // @ts-nocheck - GSAP está disponible globalmente
   document.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger);
-      
-      // Animación de los botones sociales
-      gsap.from('.social-button', {
-        scrollTrigger: {
-          trigger: '.social-button',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power3.out'
-      });
-      
-      // Animación de las estadísticas
-      gsap.from('.stat-item', {
-        scrollTrigger: {
-          trigger: '.stat-item',
-          start: 'top 90%',
-          toggleActions: 'play none none reverse'
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'power3.out'
-      });
+    const initSocialAnimations = () => {
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+
+      if (gsap && ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Animación del título y subtítulo
+        gsap.fromTo('h2, p', 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: 'h2',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación de los botones sociales
+        gsap.fromTo('.social-button', 
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.social-button',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+        
+        // Animación de las estadísticas (si existen)
+        gsap.fromTo('.stat-item', 
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.stat-item',
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      }
+    };
+
+    // Intentar inicializar inmediatamente
+    initSocialAnimations();
+
+    // Si GSAP no está disponible, esperar un poco y reintentar
+    if (!window.gsap) {
+      setTimeout(initSocialAnimations, 100);
     }
   });
 </script>
