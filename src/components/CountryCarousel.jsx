@@ -120,7 +120,6 @@ export default function CountryCarousel() {
                 </div>
                 <div className="p-1 md:p-2 text-center">
                   <div className="flex items-center justify-center gap-1">
-                    <span className="text-sm md:text-lg drop-shadow-sm">{c.flag}</span>
                     <span className="font-medium text-xs md:text-sm text-gray-900 group-hover:text-blue-600 transition-colors">
                       {c.name}
                     </span>
@@ -168,7 +167,11 @@ export default function CountryCarousel() {
         {/* Información adicional */}
         <div className="text-center mt-6 md:mt-8">
           <p className="text-sm md:text-base text-gray-600 mb-4">
-            Más de <span className="font-semibold text-blue-600">{totalCountries} destinos</span> disponibles para tu Working Holiday
+            Más de{" "}
+            <span className="font-semibold text-blue-600">
+              {totalCountries} destinos
+            </span>{" "}
+            disponibles para tu Working Holiday
           </p>
         </div>
       </div>

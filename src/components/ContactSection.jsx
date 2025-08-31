@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "react-aria-components";
 
-const whatsappUrl = "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!";
+const whatsappUrl =
+  "https://wa.me/5493875105738?text=Hola, Quiero Asistencia para mi visa Working Holiday!";
 
 export default function ContactSection() {
   const [isLoading, setIsLoading] = useState(false);
@@ -72,16 +73,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email</div>
-                  <div className="text-gray-600">info@tuvisa-tuviaje.com</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
-                  <MapPin className="h-5 w-5 text-purple-600" />
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">Oficina</div>
-                  <div className="text-gray-600">Av. Principal 123, Ciudad</div>
+                  <div className="text-gray-600">tuvisaytuviaje@gmail.com</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -90,7 +82,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">WhatsApp</div>
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 hover:text-green-700 transition-colors"
+                  >
                     +54 387 5105738
                   </a>
                 </div>
@@ -193,7 +190,7 @@ export default function ContactSection() {
                 >
                   {isLoading ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
-                
+
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
@@ -202,7 +199,7 @@ export default function ContactSection() {
                     <span className="bg-white px-2 text-gray-500">O</span>
                   </div>
                 </div>
-                
+
                 <a
                   href={whatsappUrl}
                   target="_blank"
