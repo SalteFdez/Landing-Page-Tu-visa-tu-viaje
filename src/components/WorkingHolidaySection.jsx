@@ -387,7 +387,11 @@ export default function WorkingHolidaySection() {
           {/* Hero Visual */}
           <div className="flex justify-center mb-8 md:mb-12">
             <div className="relative">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-xl md:shadow-2xl border border-white/20 w-[500px] h-[500px]">
+              <div
+                className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl 
+                p-4 md:p-8 shadow-xl md:shadow-2xl border border-white/20 
+                w-[300px] h-[300px] md:w-[500px] md:h-[500px]"
+              >
                 <div className="relative">
                   <img src="/assets/pasaporte.png" alt="Pasaporte" />
                 </div>
