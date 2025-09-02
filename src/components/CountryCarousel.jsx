@@ -162,7 +162,9 @@ export default function CountryCarousel() {
                     ? "bg-blue-600 scale-125"
                     : "bg-gray-300 hover:bg-gray-400"
                 }`}
-              />
+              >
+                <span className="sr-only">Slide {i + 1}</span>
+              </button>
             ))}
           </div>
         )}
