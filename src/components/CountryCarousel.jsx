@@ -133,15 +133,16 @@ export default function CountryCarousel() {
             <>
               <button
                 onClick={prev}
-                className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
+                className="absolute left-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronLeft className="w-3 h-3 md:w-4 md:h-4 text-gray-700 group-hover:text-blue-600 transition-colors" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
+
               <button
                 onClick={next}
-                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm shadow-sm p-1.5 md:p-1.5 rounded-full hover:bg-white hover:shadow-md transition-all duration-300 z-10 group"
               >
-                <ChevronRight className="w-3 h-3 md:w-4 md:h-4 text-gray-700 group-hover:text-blue-600 transition-colors" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-700 group-hover:text-blue-600 transition-colors" />
               </button>
             </>
           )}
